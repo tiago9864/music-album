@@ -3,28 +3,28 @@
   angular.module('music-box') //getter syntax
   .controller('MainController', MainController);
 
-  MainController.$inject = ['$scope', 'MusicboxService']; //what tools the MainController function needs
+  MainController.$inject = ['$scope', 'AlbumService']; //what tools the MainController function needs
 
-  function MainController($scope, MusicboxService){ //$scope is our bridge to the dom
-    $scope.boxes = MusicboxService.get();
-    $scope.createMusicbox = createMusicbox;
-    $scope.deleteMusicbox = deleteMusicbox;
-    $scope.editMusicbox = editMusicbox;
-    $scope.saveMusicbox = saveMusicbox;
+  function MainController($scope, AlbumService){ //$scope is the bridge to the dom
+    $scope.boxes = AlbumService.get();
+    $scope.createAlbum = createAlbum;
+    $scope.deleteAlbum = deleteAlbum;
+    $scope.editAlbum = editAlbum;
+    $scope.saveAlbum = saveAlbum;
 
-    function createMusicbox(newMusicbox){
-      TodoService.create(newMusicbox);
-      $scope.newMusicbox = '';
+    function createAlbum(newAlbum){
+      AlbumService.create(newAlbum);
+      $scope.newAlbum = '';
     }
-    function deleteMusicbox(index){
-      MusicboxService.delete(index);
+    function deleteAlbum(index){
+      AlbumService.delete(index);
     }
-    function editMusicbox(musicbox){
-      musicbox.isBeingEdited = true;
+    function editAlbum(album){
+      Album.isBeingEdited = true;
     }
-    function saveMusicbox(index, musicbox){
-      MusicboxService.update(index, musicbox.desc);
-      musicbox.isBeingEdited = false;
+    function saveAlbum(index, album){
+      AlbumService.update(index, album.desc);
+      album.isBeingEdited = false;
     }
 
   }

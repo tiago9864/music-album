@@ -8,7 +8,7 @@ router.use(bodyParser.urlencoded({extended: true}));
 
 
 
-router.get('/boxes', function(req, res){
+router.get('/albums', function(req, res){
 
 
 });

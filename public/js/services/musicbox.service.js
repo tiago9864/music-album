@@ -1,11 +1,11 @@
 
 (function() {
   angular.module('music-box')
-        .factory('MusicboxService', MusicboxService);
+        .factory('Album', AlbumService);
 
-  MusicboxService.$inject = [];
+  AlbumService.$inject = [];
 
-  function MusicboxService(){
+  function AlbumService(){
     return {
 
     };

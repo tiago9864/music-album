@@ -13,7 +13,7 @@
           <span ng-hide='album.isBeingEdited'>{{ album.desc }}</span>
           <button ng-click='deleteAlbum($index)'>&times;</button>
           <button ng-click='editAlbum(album)' ng-hide='album.isBeingEdited'>Edit</button>
-          <button ng-click='saveAlbum($index, musicbox)' ng-show='album.isBeingEdited'>Save</button>
+          <button ng-click='saveAlbum($index, album)' ng-show='album.isBeingEdited'>Save</button>
         </li>
       </ul>
     </div>
