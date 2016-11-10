@@ -5,15 +5,15 @@
   </head>
   <body>
     <div ng-controller="MainController">
-      <input type="text" ng-model='newMusicbox'>
-      <button ng-click='createMusicbox(newMusicbox)'>Add new Album</button>
+      <input type="text" ng-model='newAlbum'>
+      <button ng-click='createAlbum(newAlbum)'>Add new Album</button>
       <ul>
-        <li ng-repeat='musicbox in boxes track by $index'>
-          <input type="text" ng-show='musicbox.isBeingEdited' ng-model='musicbox.desc'>
-          <span ng-hide='musicbox.isBeingEdited'>{{ musicbox.desc }}</span>
-          <button ng-click='deleteMusicbox($index)'>&times;</button>
-          <button ng-click='editMusicbox(musicbox)' ng-hide='musicbox.isBeingEdited'>Edit</button>
-          <button ng-click='saveMusicbox($index, musicbox)' ng-show='musicbox.isBeingEdited'>Save</button>
+        <li ng-repeat='album in albums track by $index'>
+          <input type="text" ng-show='album.isBeingEdited' ng-model='album.desc'>
+          <span ng-hide='album.isBeingEdited'>{{ album.desc }}</span>
+          <button ng-click='deleteAlbum($index)'>&times;</button>
+          <button ng-click='editAlbum(album)' ng-hide='album.isBeingEdited'>Edit</button>
+          <button ng-click='saveAlbum($index, musicbox)' ng-show='album.isBeingEdited'>Save</button>
         </li>
       </ul>
     </div>

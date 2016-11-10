@@ -1,14 +1,17 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var musicboxSchema = new Schema({
+var albumSchema = new Schema({
    description: {
-      type: String,
-      required: true
+      title: String,
+      artist: String,
+      releaseDate: Date,
+      isGood: Boolean
+
 
    }
 
 });
 
-var Musicbox = mongoose.model('Musicbox', musicboxSchema);
-module.exports = Musicbox;
+var Album = mongoose.model('Album', albumSchema);
+module.exports = Album;

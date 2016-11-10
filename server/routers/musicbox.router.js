@@ -8,13 +8,16 @@ router.use(bodyParser.urlencoded({extended: true}));
 
 
 
-router.get('/boxes', function(req, res){});
-router.get('/boxes/id:', function(req, res){});
-router.post('/boxes', function(req, res){
+router.get('/boxes', function(req, res){
 
 
-  var musicbox = new Musicbox(req.body);
-  musicbox.save(function(err){
+});
+router.get('/albums/id:', function(req, res){});
+router.post('/albums', function(req, res){
+
+
+  var album = new Album(req.body);
+  album.save(function(err){
     if(err){
 
   res.status(500).json({
@@ -23,13 +26,13 @@ router.post('/boxes', function(req, res){
   });
 }
 res.status(201).json({
-  msg: 'succefully created todo'
+  msg: 'succefully created Music-Box'
 });
   });
- 
+
 });
 
-router.put('/boxes/id:', function(req, res){});
-router.delete('/boxes/id:', function(req, res){});
+router.put('/albums/id:', function(req, res){});
+router.delete('/albums/id:', function(req, res){});
 
 module.exports = router;
