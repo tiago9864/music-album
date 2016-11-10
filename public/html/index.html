@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="music-box">
+  <head>
+    <title>Introduction to AngularJS</title>
+  </head>
+  <body>
+    <div ng-controller="MainController">
+      <input type="text" ng-model='newMusicbox'>
+      <button ng-click='createMusicbox(newMusicbox)'>Add new Album</button>
+      <ul>
+        <li ng-repeat='musicbox in boxes track by $index'>
+          <input type="text" ng-show='musicbox.isBeingEdited' ng-model='musicbox.desc'>
+          <span ng-hide='musicbox.isBeingEdited'>{{ musicbox.desc }}</span>
+          <button ng-click='deleteMusicbox($index)'>&times;</button>
+          <button ng-click='editMusicbox(musicbox)' ng-hide='musicbox.isBeingEdited'>Edit</button>
+          <button ng-click='saveMusicbox($index, musicbox)' ng-show='musicbox.isBeingEdited'>Save</button>
+        </li>
+      </ul>
+    </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/controllers/main.controller.js"></script>
+  <script src="js/services/musicbox.service.js"></script>
+  </body>
+</html>
