@@ -2,15 +2,28 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var albumSchema = new Schema({
-   description: {
-      title: String,
-      artist: String,
-      releaseDate: Date,
-      isGood: Boolean,
-      genre: String
+   title : {
+       type: String,
+       required: true
+     },
+   artist: {
+      type: String,
+      required: true
+   },
+   releaseDate: {
+     type: String,
+     required: true
+   },
 
+   isGood:{
+     type: Boolean,
+     required: true
+   },
+
+   Genre:{
+     type: String,
+     required: true
    }
-
 });
 
 var Album = mongoose.model('Album', albumSchema);

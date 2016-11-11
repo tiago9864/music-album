@@ -21,7 +21,7 @@ router.get('/albums', function(req, res){
    });
   });
 });
-router.get('/albums/id:', function(req, res){
+router.get('/albums/:id', function(req, res){
    Album.find({_id: req.params.id}, function(err, foundAlbum){
     if(err){
       res.status(500).json({
@@ -54,7 +54,31 @@ res.status(201).json({
 
 });
 
-router.put('/boxes/id:', function(req, res){});
-router.delete('/boxes/id:', function(req, res){});
+router.put('/albums/:id', function(req, res){ //methods
+   Album.findOneAndUpdate({_id: req.params.id}, req.body, function(err, oldAlbum){
+     if(err){
+       res.status(500).json({
+         err: err
+       });
+     }
+     res.status(201).json({
+       msg: oldAlbum
+     });
+   });
+
+});
+router.delete('/albums/:id', function(req, res){
+   Album.findOneAndRemove({ _id: req.params.id}, function(err, deleteAlbum){
+     if(err){
+       res.status(500).json({
+         err: err
+       });
+     }
+     res.status(201).json({
+       msg: deleteAlbum
+     });
+   });
+
+});
 
 module.exports = router;
