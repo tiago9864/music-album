@@ -27,6 +27,7 @@ router.get('/albums/:id', function(req, res){
       res.status(500).json({
         err: err
       });
+      next();
     }
     res.status(200).json({
       album: foundAlbum
@@ -36,9 +37,7 @@ router.get('/albums/:id', function(req, res){
 });
 
 router.post('/albums', function(req, res){
-
-
-  var album = new Album(req.body);
+var album = new Album(req.body);
   album.save(function(err){
     if(err){
 
@@ -46,10 +45,11 @@ router.post('/albums', function(req, res){
 
     err: err
   });
-}
+} else {
 res.status(201).json({
   msg: 'succefully created album'
 });
+}
   });
 
 });
@@ -76,6 +76,19 @@ router.delete('/albums/:id', function(req, res){
      }
      res.status(201).json({
        msg: deleteAlbum
+     });
+   });
+
+});
+router.get('/albums/title/artist/releaseDate/isGood/genre/:desc', function(req, res){
+   Album.find({ title: req.params.desc }, function(err, foundAlbums){
+     if(err){
+       res.status(500).json({
+         err: err
+       });
+     }
+     res.status(201).json({
+       msg: foundAlbums
      });
    });
 

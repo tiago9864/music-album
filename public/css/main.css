@@ -1,0 +1,7 @@
+ul {
+    padding: 2;
+    margin:1;
+}
+div { display: inline-block; white-space: nowrap; }
+.success { background-color: #cffccc; overflow: scroll; min-width: 100%; }
+#container { display: inline-block; }

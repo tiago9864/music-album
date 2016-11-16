@@ -12,12 +12,12 @@ var albumSchema = new Schema({
    },
    releaseDate: {
      type: Date,
-     required: false
+     required: true
    },
 
    isGood:{
      type: Boolean,
-     required: false
+     required: true
    },
 
    genre:{

@@ -1,21 +1,74 @@
 <!DOCTYPE html>
 <html ng-app="music-box">
   <head>
+    <style>
+    p.padding {
+      padding-top: 2cm;
+    }
+    </style>
     <title>Introduction to AngularJS</title>
   </head>
-  <body>
-    <div ng-controller="MainController">
-      <input type="text" ng-model='newAlbum'>
+  <body background-color="blue">
+    <h1 align="center" >MUSIC ALBUM CREATOR</h1>
+    <div ng-controller="MainController" class="success" id="container" align="center">
+
+       <!--<div class="success" align="center">-->
+    <p>Title </p><input type="text" ng-model='newAlbum.title'>
+    <br />
+      <p>Artist</p><input type="text" ng-model='newAlbum.artist'>
+      <br />
+    <p>Release Date</p>  <input type="text" ng-model='newAlbum.releaseDate'>
+    <br />
+      <p>Is it Good?</p><input type="text" ng-model='newAlbum.isGood'>
+      <br />
+      <p>Genre</p><input type="text" ng-model='newAlbum.genre'>
+      <br />
+      <br />
+
+    <!--<div class="success" align="center" >-->
       <button ng-click='createAlbum(newAlbum)'>Add new Album</button>
+
+
+<br />
+<br />
+
+<!--<div align="center">-->
       <ul>
-        <li ng-repeat='album in boxes track by $index'>
-          <input type="text" ng-show='album.isBeingEdited' ng-model='album.desc'>
-          <span ng-hide='album.isBeingEdited'>{{ album.desc }}</span>
-          <button ng-click='deleteAlbum($index)'>&times;</button>
+        <li ng-repeat='album in albums track by $index'>
+        <h2>Album Title: </h2> <input type="text" ng-show='album.isBeingEdited' ng-model='album.title'>
+          <span ng-hide='album.isBeingEdited'>{{ album.title }}</span>
+          <br />
+          <!-- <button ng-click='deleteAlbum($index, album)'>&times;</button>
+          <button ng-click='editAlbum(album)' ng-hide='album.isBeingEdited'>Edit</button>
+          <button ng-click='saveAlbum($index, album)' ng-show='album.isBeingEdited'>Save</button> -->
+
+        <!--<li ng-repeat='album in albums track by $index'>-->
+          <h2>Artist Name:</h2><input type="text" ng-show='album.isBeingEdited' ng-model='album.artist'>
+          <span ng-hide='album.isBeingEdited'>{{ album.artist}}</span>
+          <!-- <button ng-click='deleteAlbum($index)'>&times;</button>
+          <button ng-click='editAlbum(album)' ng-hide='album.isBeingEdited'>Edit</button>
+          <button ng-click='saveAlbum($index, album)' ng-show='album.isBeingEdited'>Save</button> -->
+        <!--</li>-->
+        <br />
+        <!--<li ng-repeat='album in albums track by $index'>-->
+          <h2>Releaded Date: </h2><input type="text" ng-show='album.isBeingEdited' ng-model='album.releaseDate'>
+          <span ng-hide='album.isBeingEdited'>{{ album.releaseDate }}</span>
+          <br />
+          <!-- <button ng-click='deleteAlbum($index)'>&times;</button>
+          <button ng-click='editAlbum(album)' ng-hide='album.isBeingEdited'>Edit</button>
+          <button ng-click='saveAlbum($index, album)' ng-show='album.isBeingEdited'>Save</button> -->
+        <!--</li>-->
+        <!--<li ng-repeat='album in albums track by $index'>-->
+          <h2>Genre: </h2><input type="text" ng-show='album.isBeingEdited' ng-model='album.genre'>
+          <span ng-hide='album.isBeingEdited'>{{ album.genre }}</span>
+          <br />
+          <button ng-click='deletedAlbum($index, album)'>&times;</button>
           <button ng-click='editAlbum(album)' ng-hide='album.isBeingEdited'>Edit</button>
           <button ng-click='saveAlbum($index, album)' ng-show='album.isBeingEdited'>Save</button>
         </li>
+
       </ul>
+    <!--</div>-->
     </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
   <script src="js/app.js"></script>
