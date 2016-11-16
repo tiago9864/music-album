@@ -31,6 +31,7 @@
     }
     function createOneAlbum(album){
       //debugger;
+       console.log(album);
       $http.post('/albums', album)
       .then(function(response){
         albums.push(album);

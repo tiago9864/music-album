@@ -41,7 +41,8 @@ var album = new Album(req.body);
   album.save(function(err){
     if(err){
 
-  res.status(500).json({
+  res.status(500).json
+  res.send ({
 
     err: err
   });
