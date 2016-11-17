@@ -11,6 +11,7 @@
     $scope.deletedAlbum = deletedAlbum;
     $scope.editAlbum = editAlbum;
     $scope.saveAlbum = saveAlbum;
+   
 
     $scope.$watch(function(){
   return AlbumService.get();

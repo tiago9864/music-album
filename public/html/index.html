@@ -1,16 +1,40 @@
 <!DOCTYPE html>
 <html ng-app="music-box">
   <head>
+    <meta charset="utf-8">
     <style>
-    p.padding {
-      padding-top: 2cm;
-    }
+    ul {
+       list-style: none; /* Remove list bullets */
+       padding: 0;
+       margin: 0;
+   }
+
+   li {
+       padding-left: 16px;
+   }
+
+   li:before {
+       content: "•"; /* Insert content that looks like bullets */
+       padding-right: 8px;
+       color: blue; /* Or a color you prefer */
+   }
+   body {
+    background-image: url("http://joebeier.com/images/icons/Silver-Play-Button.png"), url("http://joebeier.com/images/icons/Silver-Play-Button.png");
+    background-color: #cccccc;
+}
     </style>
     <title>Introduction to AngularJS</title>
   </head>
-  <body>
+  <body style="background-color:powderblue;">
     <h1 align="center" >MUSIC ALBUM CREATOR</h1>
-    <div ng-controller="MainController" class="success" id="container" align="center">
+
+    <div id="image">
+        <div class="input-append">
+      <input type="text" ng-model="searchBox" class="search-query" style="width: 80px">
+    <button type="submit" class="btn">search</button>
+</div>
+</div>
+    <div ng-controller="MainController" align="center">
 
        <!--<div class="success" align="center">-->
     <p>Title </p><input type="text" ng-model='newAlbum.title'>
@@ -29,12 +53,14 @@
       <button ng-click='createAlbum(newAlbum)'>Add new Album</button>
 
 
+
 <br />
 <br />
 
 <!--<div align="center">-->
       <ul>
-        <li ng-repeat='album in albums track by $index'>
+
+        <li ng-repeat='album in albums | filter: searchBox track by $index' >
         <h2>Album Title: </h2> <input type="text" ng-show='album.isBeingEdited' ng-model='album.title'>
           <span ng-hide='album.isBeingEdited'>{{ album.title }}</span>
           <br />
@@ -51,7 +77,7 @@
         <!--</li>-->
         <br />
         <!--<li ng-repeat='album in albums track by $index'>-->
-          <h2>Releaded Date: </h2><input type="text" ng-show='album.isBeingEdited' ng-model='album.releaseDate'>
+          <h2>Released Date: </h2><input type="text" ng-show='album.isBeingEdited' ng-model='album.releaseDate'>
           <span ng-hide='album.isBeingEdited'>{{ album.releaseDate }}</span>
           <br />
           <!-- <button ng-click='deleteAlbum($index)'>&times;</button>
@@ -62,13 +88,14 @@
           <h2>Genre: </h2><input type="text" ng-show='album.isBeingEdited' ng-model='album.genre'>
           <span ng-hide='album.isBeingEdited'>{{ album.genre }}</span>
           <br />
-          <button ng-click='deletedAlbum($index, album)'>&times;</button>
+          <button ng-click='deletedAlbum($index, album)'><p style="color:red;">Delete</p></button>
           <button ng-click='editAlbum(album)' ng-hide='album.isBeingEdited'>Edit</button>
           <button ng-click='saveAlbum($index, album)' ng-show='album.isBeingEdited'>Save</button>
         </li>
 
       </ul>
-    <!--</div>-->
+
+
     </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
   <script src="js/app.js"></script>
